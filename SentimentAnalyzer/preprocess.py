@@ -1,16 +1,20 @@
-import spacy
-
-# Load spaCy's English model
-nlp = spacy.load("en_core_web_sm")
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+import string
 
 def preprocess(text):
-    # Convert to lowercase and create spaCy doc
-    doc = nlp(text.lower())
+    # Lowercase
+    text = text.lower()
 
-    # Remove stopwords, punctuation, and non-alphabetic tokens
+    # Tokenize
+    tokens = word_tokenize(text)
+
+    # Remove punctuation and stopwords
+    stop_words = set(stopwords.words('english'))
     cleaned_tokens = [
-        token.text for token in doc
-        if token.is_alpha and not token.is_stop
+        word for word in tokens
+        if word.isalpha() and word not in stop_words
     ]
 
     return cleaned_tokens

@@ -12,7 +12,7 @@ def fetch_news_from_api():
 
     url = "https://newsapi.org/v2/everything"
     params = {
-        "q": "apple",
+        "q": "tesla",
         "from": "2025-05-06",
         "to": "2025-05-06",
         "sortBy": "popularity",
